@@ -144,7 +144,13 @@ const buildApp = async () => {
 
   // Routes
   app.get('/api/health', async () => {
-    return { status: 'ok', timestamp: new Date().toISOString() };
+    return { 
+      status: 'ok', 
+      timestamp: new Date().toISOString(),
+      twitter_configured: !!(app.config.TWITTER_API_KEY && app.config.TWITTER_API_SECRET),
+      jwt_configured: !!app.config.JWT_SECRET,
+      environment: app.config.NODE_ENV
+    };
   });
 
   // Twitter OAuth routes

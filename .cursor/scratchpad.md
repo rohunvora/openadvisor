@@ -250,56 +250,111 @@ Successfully prepared the repository for deployment:
 
 The website will be live immediately after Vercel deployment. The waitlist form is UI-only for now - we can add backend functionality in the next iteration.
 
-### Executor Update - Twitter Authentication Complete ✅
+### Executor Update - Twitter OAuth & Leaderboard Complete ✅
 
-Successfully implemented Twitter OAuth authentication by adapting code from TraderFM:
+Successfully implemented Twitter OAuth sign-up and leaderboard functionality:
 
 **Backend (API)**:
-- ✅ Twitter OAuth 1.0a flow with Passport.js
-- ✅ JWT token generation for session management
-- ✅ Database operations for user CRUD
-- ✅ Public user directory endpoint
-- ✅ Proper error handling and redirects
+- ✅ Twitter OAuth 1.0a strategy configured with Passport.js
+- ✅ User creation/update on Twitter sign-in
+- ✅ JWT token generation for sessions
+- ✅ User directory endpoint with latest signups first
+- ✅ Health check endpoint shows configuration status
 
 **Frontend (Web)**:
-- ✅ useAuth hook for authentication state
-- ✅ Single CTA: "Sign in with Twitter"
-- ✅ OAuth callback handling with URL cleanup
-- ✅ User directory showing transparent KOLs
-- ✅ Loading states and empty states
+- ✅ Twitter sign-in button in header and hero
+- ✅ User leaderboard showing latest KOLs
+- ✅ Profile images and verification badges
+- ✅ Empty state when no users signed up
 
-**Key Features**:
-1. **Simple Flow**: Click "Sign in with Twitter" → Authorize → Return authenticated
-2. **User Directory**: Shows all KOLs who have signed up for transparency
-3. **Session Persistence**: JWT stored in localStorage
-4. **Clean UI**: Removed waitlist modal, focused on single Twitter CTA
+**Documentation**:
+- ✅ Created comprehensive TWITTER_OAUTH_SETUP.md guide
+- ✅ Includes callback URL configuration
+- ✅ Troubleshooting section
+- ✅ Production deployment instructions
 
-**Next Steps Required**:
+### 🚀 Required Setup Steps
 
-1. **Environment Variables**: Add to .env file:
+To make Twitter OAuth work, you need to:
+
+1. **Configure your Twitter App** at developer.twitter.com:
    ```
-   JWT_SECRET=your_jwt_secret_here
+   Callback URL: http://localhost:8080/api/auth/twitter/callback
+   Type: Web App
+   Permissions: Read
+   ```
+
+2. **Add to your .env file**:
+   ```bash
+   # Twitter OAuth (from your Twitter app)
    TWITTER_API_KEY=RFI5MXJwdXVOT01VNnZDZ1o5Z1M6MTpjaQ
    TWITTER_API_SECRET=KJsHm7zTdOy_MoxKCQOo5_vWIjTBt4uUrJ8HWLsjhT5hQUcQ7d
+   
+   # JWT Secret (generate a secure one for production)
+   JWT_SECRET=your_jwt_secret_change_this_in_production
+   
+   # URLs
+   BASE_URL=http://localhost:8080
+   FRONTEND_URL=http://localhost:3000
+   TWITTER_CALLBACK_URL=http://localhost:8080/api/auth/twitter/callback
    ```
 
-2. **Test the Flow**:
-   - Run `make dev` to start all services
+3. **Create frontend env file** `apps/web/.env.local`:
+   ```bash
+   NEXT_PUBLIC_API_URL=http://localhost:8080
+   ```
+
+4. **Test the flow**:
+   ```bash
+   make dev
+   ```
    - Visit http://localhost:3000
    - Click "Sign in with Twitter"
    - Authorize the app
-   - See yourself in the KOL directory
+   - See yourself in the leaderboard!
 
-3. **Deploy Updates**:
-   - Push to GitHub (already done)
-   - Vercel will auto-deploy the frontend
-   - Need to deploy API separately
+### 📝 How the Leaderboard Works
 
-**Technical Notes**:
-- Reused battle-tested OAuth flow from TraderFM
-- Temporary wallet address until wallet connection implemented
-- Database schema supports future vesting features
-- Clean separation between v1 (profiles) and v2 (tokens)
+1. **Latest First**: Users ordered by signup time (newest at top)
+2. **Profile Info**: Shows Twitter profile image and name
+3. **Verification Badge**: Blue Twitter icon for OAuth users
+4. **Real-time Updates**: Refreshes when new users sign up
+5. **Empty State**: Shows call-to-action when no users
+
+### 🔍 Testing Endpoints
+
+- **Health Check**: http://localhost:8080/api/health
+  - Shows if Twitter OAuth is configured
+  - Shows if JWT is configured
+  
+- **User Directory**: http://localhost:8080/api/users/directory
+  - Returns list of signed-up KOLs
+  - Public endpoint (no auth required)
+
+### 🚨 Common Issues & Solutions
+
+1. **"Twitter sign-in hit a snag"**:
+   - Check TWITTER_API_KEY and TWITTER_API_SECRET in .env
+   - Verify callback URL matches exactly
+   - Make sure Twitter app is active
+
+2. **Users not showing in leaderboard**:
+   - Check API is running (port 8080)
+   - Verify database connection
+   - Check browser console for errors
+
+3. **"Cannot read property 'replace'"**:
+   - Database migration issue with drizzle-kit
+   - Tables were already created, so ignore this
+
+### ✅ What's Working Now
+
+- Twitter OAuth sign-in flow
+- User profiles created in database
+- JWT session management
+- Public leaderboard of KOLs
+- Automatic profile image import
+- Clean UI with loading states
 
 ## Lessons
 - Always include debugging info in program output
