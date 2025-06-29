@@ -17,7 +17,7 @@ git push -u origin main
 ### 2. Deploy to Vercel
 
 1. Go to [vercel.com](https://vercel.com) and sign in
-2. Click "New Project" 
+2. Click "New Project"
 3. Import your GitHub repository
 4. Configure the deployment:
    - **Framework Preset**: Next.js
@@ -29,15 +29,17 @@ git push -u origin main
 ### 3. Environment Variables
 
 **IMPORTANT**: Add this environment variable in Vercel to enable pnpm:
+
 - `ENABLE_EXPERIMENTAL_COREPACK`: `1`
 
 For the web app, add:
+
 - `NEXT_PUBLIC_API_URL`: Your API URL (e.g., `https://api.openadvisor.io`)
 
 For now, the landing page doesn't require any other environment variables. When you're ready to add authentication, you'll need to add:
 
 - `DATABASE_URL` - Your Supabase database URL
-- `SUPABASE_URL` - Your Supabase project URL  
+- `SUPABASE_URL` - Your Supabase project URL
 - `SUPABASE_ANON_KEY` - Your Supabase anonymous key
 - `SUPABASE_SERVICE_ROLE_KEY` - Your Supabase service role key
 
@@ -54,10 +56,11 @@ After deployment, you can add a custom domain in the Vercel dashboard under Sett
 ## Development
 
 To run locally:
+
 ```bash
 make dev
 # or
 cd apps/web && pnpm dev
 ```
 
-Visit http://localhost:3000 to see the landing page. 
+Visit http://localhost:3000 to see the landing page.

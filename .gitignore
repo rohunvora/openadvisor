@@ -64,4 +64,4 @@ Thumbs.db
 logs/
 *.log
 
-# pnpm 
+# pnpm .env.backup

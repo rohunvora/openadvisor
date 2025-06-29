@@ -1,6 +1,7 @@
 import Fastify from "fastify";
 import cors from "@fastify/cors";
 import fastifyEnv from "@fastify/env";
+import fastifyCookie from "@fastify/cookie";
 import fastifySession from "@fastify/session";
 import fastifyPassport from "@fastify/passport";
 import { Strategy as TwitterStrategy } from "passport-twitter";
@@ -78,6 +79,9 @@ const buildApp = async () => {
     origin: app.config.FRONTEND_URL,
     credentials: true,
   });
+
+  // Register cookie parser (required for session)
+  await app.register(fastifyCookie);
 
   // Register session (required for Twitter OAuth 1.0a)
   await app.register(fastifySession, {
