@@ -8,6 +8,7 @@ OpenAdvisor is a transparency-first platform designed to solve the opacity and c
 - **Projects**: Issue standardized, auditable token grants without manual legal processes
 
 Key Problems Being Solved:
+
 1. Regulatory compliance fears (SEC §17(b), FTC disclosures)
 2. Manual, slow deal flow through back-channels
 3. Lack of transparency undermining community trust
@@ -18,6 +19,7 @@ Key Problems Being Solved:
 ## User Journey (v1 - Simplified)
 
 ### KOL Journey
+
 1. **Discovery**: KOL learns about OpenAdvisor through project invitation or marketing
 2. **Onboarding**: Clicks "I'm a KOL" → Connects Twitter → Signs wallet verification
 3. **Profile Creation**: Creates public profile showing advisor status
@@ -25,12 +27,14 @@ Key Problems Being Solved:
 5. **Compliance**: Platform provides clear disclosure guidelines and templates
 
 ### Project Journey (v2 - Future)
+
 - Projects will be able to create offers and track deals
 - For v1, focus is entirely on KOL experience and transparency
 
 ## User Stories (v1)
 
 ### KOL Stories
+
 - As a KOL, I want to connect my Twitter and wallet in under 60 seconds so I can create my advisor profile
 - As a KOL, I want a public profile page showing all my advisor relationships for transparency
 - As a KOL, I want clear disclosure guidelines so I stay compliant
@@ -40,11 +44,13 @@ Key Problems Being Solved:
 ## High-level Task Breakdown (Revised for v1)
 
 ### Phase 1: Foundation ✅ COMPLETE
+
 - [x] **Task 1.1**: Set up monorepo structure
 - [x] **Task 1.2**: Initialize database schema
 - [x] **Task 1.3**: Set up development environment
 
 ### Phase 2: Clear Vision & Documentation (Current)
+
 - [ ] **Task 2.1**: Create comprehensive platform documentation
   - Success: Clear README explaining the vision and v1 scope
 - [ ] **Task 2.2**: Design KOL onboarding flow diagrams
@@ -55,6 +61,7 @@ Key Problems Being Solved:
   - Success: Clear progression from MVP to full platform
 
 ### Phase 3: Authentication & KOL Profiles
+
 - [ ] **Task 3.1**: Implement Twitter OAuth v2 flow
   - Success: KOLs can connect Twitter account
 - [ ] **Task 3.2**: Implement Solana wallet connection
@@ -65,6 +72,7 @@ Key Problems Being Solved:
   - Success: Secure auth persists across sessions
 
 ### Phase 4: KOL Dashboard & Deal Tracking
+
 - [ ] **Task 4.1**: Build KOL dashboard UI
   - Success: KOLs can view and edit their profile
 - [ ] **Task 4.2**: Create manual deal entry form
@@ -75,6 +83,7 @@ Key Problems Being Solved:
   - Success: Visual indicator of transparency commitment
 
 ### Phase 5: Landing Page & Marketing
+
 - [ ] **Task 5.1**: Build compelling landing page
   - Success: Clear value prop, "I'm a KOL" CTA
 - [ ] **Task 5.2**: Create KOL onboarding tutorial
@@ -85,6 +94,7 @@ Key Problems Being Solved:
   - Success: KOL profiles discoverable via search
 
 ### Future Phases (v2+)
+
 - Smart contracts and vesting
 - Project dashboard and offer creation
 - Automated disclosure bot
@@ -93,18 +103,21 @@ Key Problems Being Solved:
 ## Key Challenges and Analysis (Updated for v1)
 
 ### Technical Challenges
+
 1. **Twitter OAuth Integration**: Must handle rate limits and API changes
    - Mitigation: Robust error handling, fallback flows
 2. **Profile Page Performance**: Public pages need to load fast
    - Mitigation: Static generation, CDN caching
 
 ### Adoption Challenges
+
 1. **KOL Trust**: Getting first KOLs to sign up
    - Mitigation: Manual outreach to friendly KOLs
 2. **Value Perception**: v1 is simpler than full vision
    - Mitigation: Clear roadmap showing future features
 
 ### Simplified Architecture
+
 - Remove smart contract complexity for v1
 - Focus on web2 features with web3 identity
 - Database-driven with future on-chain migration path
@@ -112,17 +125,19 @@ Key Problems Being Solved:
 ## Project Status Board
 
 ### TODO
-- [ ] Create comprehensive platform documentation (Task 2.1)
-- [ ] Design KOL onboarding flow diagrams (Task 2.2)
-- [ ] Write disclosure compliance guide (Task 2.3)
-- [ ] Create product roadmap document (Task 2.4)
-- [ ] Add API endpoints for waitlist signup
-- [ ] Connect waitlist form to database
+
+- [ ] Implement manual deal entry form for KOLs
+- [ ] Add verification badge system
+- [ ] Create KOL onboarding tutorial
+- [ ] Design social sharing features
+- [ ] Add SEO optimization
 
 ### IN PROGRESS
+
 - [ ] Landing page implementation
 
 ### DONE
+
 - [x] PRD analysis and requirements gathering
 - [x] Initial scratchpad creation
 - [x] Planning approved by user
@@ -135,26 +150,40 @@ Key Problems Being Solved:
 - [x] Implemented Twitter OAuth authentication flow
 - [x] Created user directory showing signed up KOLs
 - [x] Single CTA: Twitter sign-in only
+- [x] Create comprehensive platform documentation (Task 2.1)
+- [x] Design KOL onboarding flow diagrams (Task 2.2)
+- [x] Write disclosure compliance guide (Task 2.3)
+- [x] Create product roadmap document (Task 2.4)
+- [x] Add API endpoints for waitlist signup
+- [x] Connect waitlist form to database
+- [x] Build KOL dashboard UI
+- [x] Create public profile pages
+- [x] Build compelling landing page with clear value prop
 
 ### BLOCKED
+
 - None currently
 
 ## Executor's Feedback or Assistance Requests
 
 ### Executor Update - Task 1.1 Complete ✅
+
 Successfully set up monorepo structure with:
+
 - ✅ pnpm workspace configuration
 - ✅ Next.js frontend (apps/web) with TypeScript and Tailwind
-- ✅ Fastify API backend (apps/api) 
+- ✅ Fastify API backend (apps/api)
 - ✅ Shared types package (packages/shared)
 - ✅ Database package (packages/database)
-- ✅ Solana vesting contract structure (contracts/vesting) - *Note: Not needed for v1*
+- ✅ Solana vesting contract structure (contracts/vesting) - _Note: Not needed for v1_
 - ✅ All dependencies installed successfully
 
 **Verification**: Run `pnpm install` - it completes without errors. Structure matches planned architecture.
 
-### Executor Update - Task 1.2 Complete ✅ 
+### Executor Update - Task 1.2 Complete ✅
+
 Successfully created and deployed database schema to Supabase:
+
 - ✅ Database password received and configured
 - ✅ All tables created with proper relationships
 - ✅ Indexes applied for optimal query performance
@@ -162,6 +191,7 @@ Successfully created and deployed database schema to Supabase:
 - ✅ Enums created for type safety
 
 **Note for v1**: Some tables like `vesting_schedules` won't be used until v2. For v1 we'll primarily use:
+
 - `users` table - For KOL profiles
 - `deals` table - For manually logged advisor relationships
 - `disclosure_logs` table - For tracking compliance efforts
@@ -169,7 +199,9 @@ Successfully created and deployed database schema to Supabase:
 **Verification**: Run `pnpm -C packages/database db:push` - shows "[✓] Changes applied"
 
 ### Executor Update - Task 1.3 Complete ✅
+
 Successfully created comprehensive development environment:
+
 - ✅ Docker Compose configuration (PostgreSQL, Redis, Adminer, Bull Board)
 - ✅ Development environment variables
 - ✅ Helper scripts for common tasks (dev.sh, stop.sh, db.sh)
@@ -182,6 +214,7 @@ Successfully created comprehensive development environment:
 ### Executor Update - Landing Page Implementation ✅
 
 Successfully created a compelling landing page that:
+
 - ✅ Clearly communicates the OpenAdvisor vision
 - ✅ Shows how it works (simplified for v1)
 - ✅ Includes KOL signup flow with waitlist modal
@@ -190,6 +223,7 @@ Successfully created a compelling landing page that:
 - ✅ Responsive design with modern UI
 
 **Key Features Added:**
+
 1. **Hero Section**: Clear value proposition with gradient text
 2. **Problem Statement**: Three key issues OpenAdvisor solves
 3. **How It Works**: 4-step process (3 active, 1 coming soon)
@@ -209,6 +243,7 @@ The landing page is ready but needs backend support:
 4. **Success State**: Show confirmation after successful signup
 
 Would you like me to:
+
 1. **Implement waitlist backend functionality** (recommended)
 2. **Continue with documentation tasks**
 3. **Start building KOL authentication**
@@ -218,6 +253,7 @@ The landing page effectively communicates the vision and allows KOLs to express 
 ### Executor Update - Repository Ready for Vercel Deployment ✅
 
 Successfully prepared the repository for deployment:
+
 - ✅ Git repository initialized with clean history
 - ✅ All files committed (3 commits total)
 - ✅ Professional README with project overview
@@ -228,6 +264,7 @@ Successfully prepared the repository for deployment:
 **Next Steps to Deploy:**
 
 1. **Create GitHub Repository**:
+
    ```bash
    # Go to github.com and create a new repository named "openadvisor"
    # Then run these commands:
@@ -243,6 +280,7 @@ Successfully prepared the repository for deployment:
    - Deploy!
 
 **Repository Structure Ready**:
+
 - Landing page with vision, roadmap, and KOL signup
 - Database schema ready (but not needed for landing page)
 - Development environment configured
@@ -255,6 +293,7 @@ The website will be live immediately after Vercel deployment. The waitlist form 
 Successfully implemented Twitter OAuth sign-up and leaderboard functionality:
 
 **Backend (API)**:
+
 - ✅ Twitter OAuth 1.0a strategy configured with Passport.js
 - ✅ User creation/update on Twitter sign-in
 - ✅ JWT token generation for sessions
@@ -262,12 +301,14 @@ Successfully implemented Twitter OAuth sign-up and leaderboard functionality:
 - ✅ Health check endpoint shows configuration status
 
 **Frontend (Web)**:
+
 - ✅ Twitter sign-in button in header and hero
 - ✅ User leaderboard showing latest KOLs
 - ✅ Profile images and verification badges
 - ✅ Empty state when no users signed up
 
 **Documentation**:
+
 - ✅ Created comprehensive TWITTER_OAUTH_SETUP.md guide
 - ✅ Includes callback URL configuration
 - ✅ Troubleshooting section
@@ -278,6 +319,7 @@ Successfully implemented Twitter OAuth sign-up and leaderboard functionality:
 To make Twitter OAuth work, you need to:
 
 1. **Configure your Twitter App** at developer.twitter.com:
+
    ```
    Callback URL: http://localhost:8080/api/auth/twitter/callback
    Type: Web App
@@ -285,14 +327,15 @@ To make Twitter OAuth work, you need to:
    ```
 
 2. **Add to your .env file**:
+
    ```bash
    # Twitter OAuth (from your Twitter app)
    TWITTER_API_KEY=RFI5MXJwdXVOT01VNnZDZ1o5Z1M6MTpjaQ
    TWITTER_API_SECRET=KJsHm7zTdOy_MoxKCQOo5_vWIjTBt4uUrJ8HWLsjhT5hQUcQ7d
-   
+
    # JWT Secret (generate a secure one for production)
    JWT_SECRET=your_jwt_secret_change_this_in_production
-   
+
    # URLs
    BASE_URL=http://localhost:8080
    FRONTEND_URL=http://localhost:3000
@@ -300,6 +343,7 @@ To make Twitter OAuth work, you need to:
    ```
 
 3. **Create frontend env file** `apps/web/.env.local`:
+
    ```bash
    NEXT_PUBLIC_API_URL=http://localhost:8080
    ```
@@ -326,7 +370,6 @@ To make Twitter OAuth work, you need to:
 - **Health Check**: http://localhost:8080/api/health
   - Shows if Twitter OAuth is configured
   - Shows if JWT is configured
-  
 - **User Directory**: http://localhost:8080/api/users/directory
   - Returns list of signed-up KOLs
   - Public endpoint (no auth required)
@@ -334,11 +377,13 @@ To make Twitter OAuth work, you need to:
 ### 🚨 Common Issues & Solutions
 
 1. **"Twitter sign-in hit a snag"**:
+
    - Check TWITTER_API_KEY and TWITTER_API_SECRET in .env
    - Verify callback URL matches exactly
    - Make sure Twitter app is active
 
 2. **Users not showing in leaderboard**:
+
    - Check API is running (port 8080)
    - Verify database connection
    - Check browser console for errors
@@ -356,7 +401,139 @@ To make Twitter OAuth work, you need to:
 - Automatic profile image import
 - Clean UI with loading states
 
+### Executor Update - Phase 2 Complete ✅
+
+Successfully completed all Phase 2 documentation tasks:
+
+**Task 2.1 - Platform Documentation** ✅
+
+- Completely rewrote README.md with:
+  - Clear problem statement and solution
+  - Detailed value propositions for each user type
+  - v1/v2/v3 product roadmap
+  - Technical architecture overview
+  - Contributing guidelines
+
+**Task 2.2 - KOL Onboarding Flow** ✅
+
+- Created visual flow diagram using Mermaid
+- Documented detailed step-by-step process
+- Included timing targets (<60 seconds total)
+- Added error handling scenarios
+- Defined success metrics and KPIs
+
+**Task 2.3 - Disclosure Compliance Guide** ✅
+
+- Created comprehensive guide with:
+  - Quick compliance checklist
+  - Real enforcement examples
+  - Platform-specific best practices
+  - Disclosure templates (short/medium/long)
+  - Common mistakes to avoid
+  - Pro tips for building trust
+
+**Task 2.4 - Product Roadmap** ✅
+
+- Created detailed roadmap with:
+  - Visual Gantt chart timeline
+  - v1/v2/v3 feature breakdowns
+  - Success metrics for each phase
+  - Technical stack evolution
+  - Revenue projections
+  - Partnership strategy
+
+**Documentation Structure Created:**
+
+```
+docs/
+├── KOL_ONBOARDING_FLOW.md    # Visual flow + detailed steps
+├── DISCLOSURE_COMPLIANCE_GUIDE.md  # SEC/FTC compliance made simple
+└── PRODUCT_ROADMAP.md         # Complete vision with timelines
+```
+
+### Next Steps
+
+With Phase 2 documentation complete, we now have:
+
+1. **Clear Vision**: Comprehensive README explaining the platform
+2. **User Journey**: Detailed onboarding flow for KOLs
+3. **Compliance Ready**: Simple guide for staying legal
+4. **Future Mapped**: Complete roadmap from MVP to platform
+
+Ready to proceed with Phase 3 (Authentication & KOL Profiles) or continue refining the current implementation. The foundation is solid with clear documentation that will guide development and help onboard both developers and users.
+
+### Executor Update - Enhanced Platform Features ✅
+
+Successfully implemented key platform features following Phase 2 documentation:
+
+**Waitlist Functionality** ✅
+
+- Added `waitlist` table to database schema
+- Created POST `/api/waitlist` endpoint with:
+  - Email validation
+  - Twitter handle normalization
+  - Duplicate prevention
+  - User agent/IP tracking
+- Integrated waitlist modal in landing page
+- Added "Join Waitlist" button as secondary CTA
+
+**KOL Dashboard** ✅
+
+- Created `/dashboard` page with:
+  - Welcome section with profile link
+  - Copy-to-clipboard functionality
+  - Stats grid (deals, compliance, actions)
+  - Advisory deals management area
+  - Empty states with clear CTAs
+- Redirects unauthenticated users to home
+- Landing page now directs authenticated users to dashboard
+
+**Public Profile Pages** ✅
+
+- Created `/u/[handle]` dynamic route
+- Shows KOL's public information:
+  - Twitter verification status
+  - Compliance and transparency scores
+  - Public advisory relationships
+  - Stats overview
+- Handles non-existent profiles gracefully
+- Fetches real user data from directory API
+
+**Enhanced Landing Page** ✅
+
+- Added waitlist modal for interested users
+- Improved authenticated user experience with dashboard button
+- Maintained clean, focused design
+- Clear value proposition and roadmap
+
+### Technical Implementation Details
+
+1. **Database**: Extended schema with waitlist table including email, Twitter handle, referral source tracking
+2. **API**: Used dynamic imports pattern consistent with existing codebase
+3. **Frontend**: Created responsive, accessible UI components with proper loading states
+4. **Navigation**: Clear user flows from landing → dashboard → profile
+
+### Next Steps
+
+The platform now has a solid foundation with:
+
+- ✅ User authentication (Twitter OAuth)
+- ✅ Waitlist for early interest
+- ✅ KOL dashboard for management
+- ✅ Public profiles for transparency
+- ✅ Clear documentation and roadmap
+
+Ready to implement:
+
+1. Manual deal entry form (CRUD operations)
+2. Verification badge system
+3. Social sharing features
+4. SEO optimization
+
+The v1 MVP is taking shape with focus on transparency and ease of use, setting the stage for v2's on-chain features.
+
 ## Lessons
+
 - Always include debugging info in program output
 - Read files before editing them
 - Run security audits (npm audit) when vulnerabilities appear
@@ -364,4 +541,4 @@ To make Twitter OAuth work, you need to:
 - For LLM-powered features, provide rich context over rigid templates
 - Simplify scope for v1 - vesting and complex features can wait
 - Tailwind v4 uses @tailwindcss/postcss instead of traditional config
-- For Vercel monorepo deployment, specify the root directory as apps/web 
+- For Vercel monorepo deployment, specify the root directory as apps/web

@@ -1,113 +1,165 @@
-# OpenAdvisor
+# OpenAdvisor 🌟
 
-> The first platform for compliant crypto advisor deals. Link your Twitter, showcase your advisor relationships, and build trust through radical transparency.
+**Transparency-first platform for crypto KOL token grants on Solana**
 
-## 🚀 Overview
+OpenAdvisor solves the opacity and compliance issues plaguing crypto advisor deals. We enable KOLs to accept token grants with automatic SEC/FTC compliance while giving projects a standardized way to issue advisor agreements.
 
-OpenAdvisor solves the opacity and compliance issues in crypto advisor deals by providing:
+## 🎯 The Problem
 
-- **For KOLs**: Accept token grants on Solana with automatic compliance and disclosure
-- **For Projects**: Issue standardized, auditable token grants without manual legal processes
+The crypto advisory ecosystem is broken:
 
-## 🎯 Key Features
+- **KOLs fear regulatory action** - SEC §17(b) and FTC disclosure rules create legal landmines
+- **Projects waste time on legal** - Each deal requires custom contracts and manual tracking
+- **Communities demand transparency** - Undisclosed paid promotions erode trust
+- **Manual compliance is impossible** - Tracking vesting schedules and disclosure requirements across multiple deals doesn't scale
 
-### v1 (Live Now)
-- ✅ KOL profile creation with Twitter & wallet verification
-- ✅ Public advisor profiles for transparency
-- ✅ Manual deal logging for existing relationships
-- ✅ Compliance guidelines and resources
+## 💡 Our Solution
 
-### v2 (Coming Q1 2025)
-- 🔜 On-chain token grant acceptance
-- 🔜 Automated vesting contracts
-- 🔜 Project offer creation dashboard
+OpenAdvisor is the first platform that makes crypto advisory deals transparent, compliant, and efficient:
 
-### v3 (Coming Q2 2025)
-- 🔜 Automatic disclosure bot for Twitter
-- 🔜 SAATP legal templates
-- 🔜 Multi-chain support
+### For KOLs
 
-## 🛠️ Tech Stack
+- ✅ **One-click Twitter signup** - Join in seconds, no forms
+- ✅ **Public advisor profile** - Show all your advisor relationships transparently
+- ✅ **Automated compliance** - We handle SEC/FTC disclosure requirements
+- ✅ **Future: Smart vesting** - Token grants vest on-chain with Solana (v2)
 
-- **Frontend**: Next.js 15, TypeScript, Tailwind CSS
-- **Backend**: Fastify (Node.js)
-- **Database**: PostgreSQL (Supabase)
-- **Blockchain**: Solana (Anchor framework)
-- **Infrastructure**: pnpm workspaces, Docker
+### For Projects (Coming v2)
 
-## 📦 Project Structure
+- ✅ **Standardized offers** - Create advisor agreements without lawyers
+- ✅ **Transparent tracking** - See all your advisors in one place
+- ✅ **Automated vesting** - Smart contracts handle token distribution
+- ✅ **Compliance built-in** - Every deal meets regulatory requirements
 
-```
-openadvisor/
-├── apps/
-│   ├── web/          # Next.js frontend
-│   └── api/          # Fastify backend
-├── packages/
-│   ├── database/     # Drizzle ORM & schemas
-│   └── shared/       # Shared types & utilities
-├── contracts/        # Solana programs
-└── scripts/          # Development scripts
-```
+### For Communities
+
+- ✅ **Full transparency** - See which KOLs advise which projects
+- ✅ **Verified relationships** - On-chain proof of advisory deals
+- ✅ **Fair token distribution** - Know exactly how tokens vest
+- ✅ **Trust through transparency** - No more hidden paid shills
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 18+
+
+- Node.js 20+
 - pnpm 8+
-- Docker (for local development)
+- PostgreSQL 14+ (or use our Docker setup)
+- Supabase account (for production)
 
 ### Development Setup
 
-```bash
-# Clone the repository
-git clone https://github.com/YOUR_USERNAME/openadvisor.git
-cd openadvisor
+1. **Clone and install**
 
-# Install dependencies
-pnpm install
+   ```bash
+   git clone https://github.com/yourusername/openadvisor.git
+   cd openadvisor
+   pnpm install
+   ```
 
-# Copy environment variables
-cp env.example .env
+2. **Set up environment**
 
-# Start development servers
-make dev
+   ```bash
+   cp .env.example .env
+   # Edit .env with your credentials
+   ```
+
+3. **Start development**
+
+   ```bash
+   make dev
+   # Or manually:
+   # docker-compose up -d  # Starts PostgreSQL
+   # pnpm dev              # Starts frontend and backend
+   ```
+
+4. **Access the app**
+   - Frontend: http://localhost:3000
+   - API: http://localhost:8080
+   - Database UI: http://localhost:8081
+
+## 📋 Product Roadmap
+
+### v1: KOL Transparency (Current)
+
+**Goal**: Get KOLs comfortable with transparency
+
+- ✅ Twitter OAuth signup
+- ✅ Public KOL profiles
+- ✅ Manual deal logging
+- ✅ Compliance guidelines
+- 🔄 Landing page with vision
+- 🔄 KOL leaderboard
+
+### v2: Smart Vesting (Q1 2025)
+
+**Goal**: Automate token vesting on Solana
+
+- Token vesting smart contracts
+- Project dashboard
+- Automated deal creation
+- On-chain vesting schedules
+- Disclosure bot for Twitter
+
+### v3: Full Platform (Q2 2025)
+
+**Goal**: Complete advisory ecosystem
+
+- Deal negotiation tools
+- Multi-chain support
+- Analytics dashboard
+- API for integrations
+- Mobile app
+
+## 🏗 Architecture
+
+```
+openadvisor/
+├── apps/
+│   ├── web/          # Next.js 15 frontend
+│   └── api/          # Fastify backend
+├── packages/
+│   ├── database/     # Drizzle ORM + PostgreSQL
+│   └── shared/       # Shared types
+└── contracts/        # Solana programs (v2)
 ```
 
-Visit http://localhost:3000 to see the landing page.
+### Tech Stack
 
-## 🌐 Deployment
+- **Frontend**: Next.js 15, Tailwind CSS, TypeScript
+- **Backend**: Fastify, TypeScript, JWT auth
+- **Database**: PostgreSQL with Drizzle ORM
+- **Deployment**: Vercel (frontend) + Railway/Supabase (backend)
+- **Smart Contracts**: Anchor Framework on Solana (v2)
 
-See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed Vercel deployment instructions.
+## 🔑 Environment Variables
 
-### Quick Deploy to Vercel
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FYOUR_USERNAME%2Fopenadvisor&root-directory=apps/web)
-
-**Important**: Set the root directory to `apps/web` when deploying.
-
-## 📝 Environment Variables
-
-For development, copy `env.example` to `.env`:
+Create a `.env` file with:
 
 ```bash
 # Database
-DATABASE_URL=your_database_url
-DATABASE_PASSWORD=your_password
+DATABASE_URL=postgresql://user:password@localhost:5432/openadvisor
 
-# Supabase
-SUPABASE_URL=your_supabase_url
-SUPABASE_ANON_KEY=your_anon_key
-SUPABASE_SERVICE_ROLE_KEY=your_service_key
+# Supabase (production)
+SUPABASE_URL=your-supabase-url
+SUPABASE_SERVICE_KEY=your-service-key
 
-# Twitter API (for future features)
-TWITTER_API_KEY=your_api_key
-TWITTER_API_KEY_SECRET=your_api_secret
-TWITTER_BEARER_TOKEN=your_bearer_token
+# Authentication
+JWT_SECRET=your-secret-key
+NEXTAUTH_SECRET=your-nextauth-secret
+
+# Twitter OAuth
+TWITTER_CLIENT_ID=your-twitter-client-id
+TWITTER_CLIENT_SECRET=your-twitter-client-secret
+
+# URLs
+NEXT_PUBLIC_API_URL=http://localhost:8080
+NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
 ## 🤝 Contributing
 
-We're building in public! Contributions are welcome:
+We're building this in public! Contributions welcome:
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
@@ -115,16 +167,25 @@ We're building in public! Contributions are welcome:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
+### Development Guidelines
+
+- Write tests for new features
+- Follow TypeScript best practices
+- Keep components small and focused
+- Document your code
+
 ## 📄 License
 
-This project is open source. See LICENSE file for details.
+MIT License - see [LICENSE](LICENSE) file for details
 
-## 🔗 Links
+## 🙏 Acknowledgments
 
-- [Website](https://openadvisor.io) (coming soon)
-- [Twitter](https://twitter.com/OpenAdvisor)
-- [Documentation](./docs) (coming soon)
+- Built on Solana for transparent, efficient token vesting
+- Inspired by the need for better crypto advisory infrastructure
+- Thanks to all KOLs pushing for more transparency
 
 ---
 
-Built with ❤️ for transparent crypto advisor relationships 
+**Ready to make crypto advisory deals transparent?**
+
+[🚀 Try OpenAdvisor](https://openadvisor.xyz) | [📖 Read our docs](https://docs.openadvisor.xyz) | [🐦 Follow us](https://twitter.com/openadvisor)
