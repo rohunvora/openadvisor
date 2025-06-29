@@ -61,5 +61,4 @@ Thumbs.db
 logs/
 *.log
 
-# pnpm
-pnpm-lock.yaml 
+# pnpm 
