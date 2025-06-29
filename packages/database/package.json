@@ -1,0 +1,28 @@
+{
+  "name": "@openadvisor/database",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "tsx src/migrate.ts",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "clean": "rm -rf dist node_modules"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.38.2",
+    "postgres": "^3.4.5",
+    "dotenv": "^16.4.5",
+    "@supabase/supabase-js": "^2.46.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "drizzle-kit": "^0.31.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.0"
+  }
+} 

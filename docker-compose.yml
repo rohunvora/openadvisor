@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  # PostgreSQL for local development (optional, since we're using Supabase)
+  postgres:
+    image: postgres:15-alpine
+    container_name: openadvisor_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: localpassword
+      POSTGRES_DB: openadvisor
+    ports:
+      - "5433:5432"  # Different port to avoid conflicts
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis for caching and job queues
+  redis:
+    image: redis:7-alpine
+    container_name: openadvisor_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Adminer for database management (optional)
+  adminer:
+    image: adminer:4
+    container_name: openadvisor_adminer
+    ports:
+      - "8081:8080"
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+    depends_on:
+      - postgres
+
+  # Bull Board for Redis queue monitoring
+  bullboard:
+    image: deadly0/bull-board:latest
+    container_name: openadvisor_bullboard
+    ports:
+      - "3030:3000"
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    depends_on:
+      - redis
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  default:
+    name: openadvisor_network 
