@@ -22,13 +22,19 @@ git push -u origin main
 4. Configure the deployment:
    - **Framework Preset**: Next.js
    - **Root Directory**: `apps/web` (IMPORTANT!)
-   - **Build Command**: Leave as default (`next build`)
+   - **Build Command**: Leave as default (`pnpm build`)
    - **Output Directory**: Leave as default (`.next`)
-   - **Install Command**: `pnpm install`
+   - **Install Command**: `pnpm install --frozen-lockfile`
 
 ### 3. Environment Variables
 
-For now, the landing page doesn't require any environment variables. When you're ready to add the waitlist functionality, you'll need to add:
+**IMPORTANT**: Add this environment variable in Vercel to enable pnpm:
+- `ENABLE_EXPERIMENTAL_COREPACK`: `1`
+
+For the web app, add:
+- `NEXT_PUBLIC_API_URL`: Your API URL (e.g., `https://api.openadvisor.io`)
+
+For now, the landing page doesn't require any other environment variables. When you're ready to add authentication, you'll need to add:
 
 - `DATABASE_URL` - Your Supabase database URL
 - `SUPABASE_URL` - Your Supabase project URL  

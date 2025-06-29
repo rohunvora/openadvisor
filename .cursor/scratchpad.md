@@ -131,6 +131,10 @@ Key Problems Being Solved:
 - [x] Create development environment (Task 1.3) - Completed
 - [x] Revised plan for simplified v1 without vesting
 - [x] Created compelling landing page with clear vision communication
+- [x] Repository deployed to GitHub and Vercel
+- [x] Implemented Twitter OAuth authentication flow
+- [x] Created user directory showing signed up KOLs
+- [x] Single CTA: Twitter sign-in only
 
 ### BLOCKED
 - None currently
@@ -245,6 +249,57 @@ Successfully prepared the repository for deployment:
 - No environment variables needed for initial deployment
 
 The website will be live immediately after Vercel deployment. The waitlist form is UI-only for now - we can add backend functionality in the next iteration.
+
+### Executor Update - Twitter Authentication Complete ✅
+
+Successfully implemented Twitter OAuth authentication by adapting code from TraderFM:
+
+**Backend (API)**:
+- ✅ Twitter OAuth 1.0a flow with Passport.js
+- ✅ JWT token generation for session management
+- ✅ Database operations for user CRUD
+- ✅ Public user directory endpoint
+- ✅ Proper error handling and redirects
+
+**Frontend (Web)**:
+- ✅ useAuth hook for authentication state
+- ✅ Single CTA: "Sign in with Twitter"
+- ✅ OAuth callback handling with URL cleanup
+- ✅ User directory showing transparent KOLs
+- ✅ Loading states and empty states
+
+**Key Features**:
+1. **Simple Flow**: Click "Sign in with Twitter" → Authorize → Return authenticated
+2. **User Directory**: Shows all KOLs who have signed up for transparency
+3. **Session Persistence**: JWT stored in localStorage
+4. **Clean UI**: Removed waitlist modal, focused on single Twitter CTA
+
+**Next Steps Required**:
+
+1. **Environment Variables**: Add to .env file:
+   ```
+   JWT_SECRET=your_jwt_secret_here
+   TWITTER_API_KEY=RFI5MXJwdXVOT01VNnZDZ1o5Z1M6MTpjaQ
+   TWITTER_API_SECRET=KJsHm7zTdOy_MoxKCQOo5_vWIjTBt4uUrJ8HWLsjhT5hQUcQ7d
+   ```
+
+2. **Test the Flow**:
+   - Run `make dev` to start all services
+   - Visit http://localhost:3000
+   - Click "Sign in with Twitter"
+   - Authorize the app
+   - See yourself in the KOL directory
+
+3. **Deploy Updates**:
+   - Push to GitHub (already done)
+   - Vercel will auto-deploy the frontend
+   - Need to deploy API separately
+
+**Technical Notes**:
+- Reused battle-tested OAuth flow from TraderFM
+- Temporary wallet address until wallet connection implemented
+- Database schema supports future vesting features
+- Clean separation between v1 (profiles) and v2 (tokens)
 
 ## Lessons
 - Always include debugging info in program output
