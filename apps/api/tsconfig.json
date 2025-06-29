@@ -7,7 +7,6 @@
     ],
     "moduleResolution": "node",
     "outDir": "./dist",
-    "rootDir": "./src",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -39,13 +38,5 @@
   "exclude": [
     "node_modules",
     "dist"
-  ],
-  "references": [
-    {
-      "path": "../../packages/database"
-    },
-    {
-      "path": "../../packages/shared"
-    }
   ]
 }
