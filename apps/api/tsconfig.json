@@ -1,10 +1,22 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "./dist",
-    "rootDir": "../../",
-    "noEmit": false,
+    "target": "ES2022",
     "module": "commonjs",
+    "lib": [
+      "ES2022"
+    ],
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "incremental": true,
+    "noEmit": false,
     "baseUrl": ".",
     "paths": {
       "@openadvisor/database": [
@@ -22,12 +34,18 @@
     }
   },
   "include": [
-    "src/**/*",
-    "../../packages/database/src/**/*",
-    "../../packages/shared/src/**/*"
+    "src/**/*"
   ],
   "exclude": [
     "node_modules",
     "dist"
+  ],
+  "references": [
+    {
+      "path": "../../packages/database"
+    },
+    {
+      "path": "../../packages/shared"
+    }
   ]
 }
