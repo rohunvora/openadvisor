@@ -38,6 +38,9 @@ yarn-error.log*
 # Typescript
 *.tsbuildinfo
 next-env.d.ts
+packages/*/src/**/*.js
+packages/*/src/**/*.d.ts
+packages/*/src/**/*.d.ts.map
 
 # Solana/Anchor
 target/
