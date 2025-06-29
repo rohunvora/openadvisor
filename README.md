@@ -1,14 +1,41 @@
 # OpenAdvisor
 
-Transparency-first platform for crypto KOL token grants on Solana.
+> The first platform for compliant crypto advisor deals. Link your Twitter, showcase your advisor relationships, and build trust through radical transparency.
 
-## Overview
+## 🚀 Overview
 
-OpenAdvisor enables:
-- **KOLs**: Accept token grants with automatic SEC/FTC compliance
-- **Projects**: Issue standardized advisor agreements without legal friction
+OpenAdvisor solves the opacity and compliance issues in crypto advisor deals by providing:
 
-## Monorepo Structure
+- **For KOLs**: Accept token grants on Solana with automatic compliance and disclosure
+- **For Projects**: Issue standardized, auditable token grants without manual legal processes
+
+## 🎯 Key Features
+
+### v1 (Live Now)
+- ✅ KOL profile creation with Twitter & wallet verification
+- ✅ Public advisor profiles for transparency
+- ✅ Manual deal logging for existing relationships
+- ✅ Compliance guidelines and resources
+
+### v2 (Coming Q1 2025)
+- 🔜 On-chain token grant acceptance
+- 🔜 Automated vesting contracts
+- 🔜 Project offer creation dashboard
+
+### v3 (Coming Q2 2025)
+- 🔜 Automatic disclosure bot for Twitter
+- 🔜 SAATP legal templates
+- 🔜 Multi-chain support
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Next.js 15, TypeScript, Tailwind CSS
+- **Backend**: Fastify (Node.js)
+- **Database**: PostgreSQL (Supabase)
+- **Blockchain**: Solana (Anchor framework)
+- **Infrastructure**: pnpm workspaces, Docker
+
+## 📦 Project Structure
 
 ```
 openadvisor/
@@ -16,140 +43,88 @@ openadvisor/
 │   ├── web/          # Next.js frontend
 │   └── api/          # Fastify backend
 ├── packages/
-│   ├── shared/       # Shared types and utilities
-│   └── database/     # Database schema and migrations
-└── contracts/
-    └── vesting/      # Solana vesting program
+│   ├── database/     # Drizzle ORM & schemas
+│   └── shared/       # Shared types & utilities
+├── contracts/        # Solana programs
+└── scripts/          # Development scripts
 ```
 
-## Prerequisites
+## 🚀 Quick Start
 
-- Node.js >= 18
-- pnpm >= 8
-- Docker & Docker Compose
-- PostgreSQL 15+ (or use Supabase)
-- Solana CLI (for contract development)
-- Anchor Framework (for Solana programs)
+### Prerequisites
+- Node.js 18+
+- pnpm 8+
+- Docker (for local development)
 
-## Getting Started
-
-### Quick Setup
+### Development Setup
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/openadvisor.git
+git clone https://github.com/YOUR_USERNAME/openadvisor.git
 cd openadvisor
 
-# Run automated setup
-make setup
+# Install dependencies
+pnpm install
 
-# Start development
+# Copy environment variables
+cp env.example .env
+
+# Start development servers
 make dev
 ```
 
-### Manual Setup
+Visit http://localhost:3000 to see the landing page.
 
-1. Install dependencies:
-```bash
-pnpm install
-```
+## 🌐 Deployment
 
-2. Set up environment variables:
-```bash
-cp env.example .env
-# Edit .env with your credentials
-```
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed Vercel deployment instructions.
 
-3. Start Docker services:
-```bash
-docker-compose up -d
-```
+### Quick Deploy to Vercel
 
-4. Push database schema:
-```bash
-pnpm -C packages/database db:push
-```
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FYOUR_USERNAME%2Fopenadvisor&root-directory=apps/web)
 
-5. Start development servers:
-```bash
-pnpm dev
-```
+**Important**: Set the root directory to `apps/web` when deploying.
 
-## Development
+## 📝 Environment Variables
 
-### Available Commands
+For development, copy `env.example` to `.env`:
 
 ```bash
-make help         # Show all available commands
-make dev          # Start development environment
-make stop         # Stop development environment
-make db-studio    # Open database GUI
-make build        # Build all packages
-make test         # Run tests
-make lint         # Run linters
+# Database
+DATABASE_URL=your_database_url
+DATABASE_PASSWORD=your_password
+
+# Supabase
+SUPABASE_URL=your_supabase_url
+SUPABASE_ANON_KEY=your_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_service_key
+
+# Twitter API (for future features)
+TWITTER_API_KEY=your_api_key
+TWITTER_API_KEY_SECRET=your_api_secret
+TWITTER_BEARER_TOKEN=your_bearer_token
 ```
 
-### Service URLs
+## 🤝 Contributing
 
-- **Frontend**: http://localhost:3000
-- **API**: http://localhost:8080
-- **Database Studio**: Run `make db-studio`
-- **Adminer** (DB GUI): http://localhost:8081
-- **Bull Board** (Queue Monitor): http://localhost:3030
+We're building in public! Contributions are welcome:
 
-### Development Scripts
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-```bash
-./scripts/dev.sh    # Start development with Docker
-./scripts/stop.sh   # Stop all services
-./scripts/db.sh     # Database management commands
-```
+## 📄 License
 
-### VS Code Setup
+This project is open source. See LICENSE file for details.
 
-This project includes VS Code configuration:
-- Install recommended extensions when prompted
-- Settings are pre-configured for TypeScript, ESLint, and Prettier
+## 🔗 Links
 
-## Database
+- [Website](https://openadvisor.io) (coming soon)
+- [Twitter](https://twitter.com/OpenAdvisor)
+- [Documentation](./docs) (coming soon)
 
-We use Drizzle ORM with PostgreSQL (via Supabase):
+---
 
-```bash
-# Open database studio
-pnpm -C packages/database db:studio
-
-# Generate migrations
-pnpm -C packages/database db:generate
-
-# Push schema changes
-pnpm -C packages/database db:push
-```
-
-## Environment Variables
-
-See `env.example` for required variables:
-- Twitter API credentials
-- Supabase/Database credentials
-- JWT secrets
-- Solana RPC endpoints
-
-## Architecture
-
-- **Frontend**: Next.js 15 with App Router, Tailwind CSS, shadcn/ui
-- **Backend**: Fastify (high-performance Node.js framework)
-- **Database**: PostgreSQL with Drizzle ORM
-- **Smart Contracts**: Anchor framework on Solana
-- **Caching**: Redis
-- **Authentication**: Twitter OAuth + Solana wallet signing
-
-## Contributing
-
-1. Create a feature branch
-2. Make your changes
-3. Run tests: `make test`
-4. Submit a pull request
-
-## License
-
-MIT 
+Built with ❤️ for transparent crypto advisor relationships 
