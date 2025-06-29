@@ -179,6 +179,30 @@ export const disclosureLogs = pgTable('disclosure_logs', {
   tweetIdIdx: index('disclosure_tweet_id_idx').on(table.tweetId),
 }));
 
+// Waitlist table - captures early interest
+export const waitlist = pgTable('waitlist', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  
+  // Contact info
+  email: text('email').notNull(),
+  twitterHandle: text('twitter_handle'),
+  
+  // Metadata
+  referralSource: text('referral_source'),
+  userAgent: text('user_agent'),
+  ipAddress: text('ip_address'),
+  
+  // Status
+  isContacted: boolean('is_contacted').default(false).notNull(),
+  contactedAt: timestamp('contacted_at'),
+  
+  // Timestamps
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+}, (table) => ({
+  emailIdx: index('waitlist_email_idx').on(table.email),
+  twitterHandleIdx: index('waitlist_twitter_handle_idx').on(table.twitterHandle),
+}));
+
 // Relations
 export const usersRelations = relations(users, ({ many }) => ({
   createdOffers: many(offers),
@@ -228,4 +252,18 @@ export const disclosureLogsRelations = relations(disclosureLogs, ({ one }) => ({
     fields: [disclosureLogs.kolId],
     references: [users.id],
   }),
-})); 
+}));
+
+// Type exports
+export type User = InferSelectModel<typeof users>;
+export type NewUser = InferInsertModel<typeof users>;
+export type Offer = InferSelectModel<typeof offers>;
+export type NewOffer = InferInsertModel<typeof offers>;
+export type Deal = InferSelectModel<typeof deals>;
+export type NewDeal = InferInsertModel<typeof deals>;
+export type VestingSchedule = InferSelectModel<typeof vestingSchedules>;
+export type NewVestingSchedule = InferInsertModel<typeof vestingSchedules>;
+export type DisclosureLog = InferSelectModel<typeof disclosureLogs>;
+export type NewDisclosureLog = InferInsertModel<typeof disclosureLogs>;
+export type WaitlistEntry = InferSelectModel<typeof waitlist>;
+export type NewWaitlistEntry = InferInsertModel<typeof waitlist>;

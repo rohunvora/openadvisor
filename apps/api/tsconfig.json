@@ -2,10 +2,32 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "../../",
     "noEmit": false,
-    "module": "commonjs"
+    "module": "commonjs",
+    "baseUrl": ".",
+    "paths": {
+      "@openadvisor/database": [
+        "../../packages/database/src"
+      ],
+      "@openadvisor/database/*": [
+        "../../packages/database/src/*"
+      ],
+      "@openadvisor/shared": [
+        "../../packages/shared/src"
+      ],
+      "@openadvisor/shared/*": [
+        "../../packages/shared/src/*"
+      ]
+    }
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist"]
-} 
+  "include": [
+    "src/**/*",
+    "../../packages/database/src/**/*",
+    "../../packages/shared/src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
