@@ -1,9 +1,9 @@
 [build]
 builder = "nixpacks"
-buildCommand = "cd apps/api && pnpm install --frozen-lockfile && pnpm build"
+buildCommand = "pnpm install --frozen-lockfile && cd apps/api && pnpm build"
 
 [deploy]
-startCommand = "cd apps/api && node dist/index.js"
+startCommand = "cd apps/api && pnpm start"
 healthcheckPath = "/api/health"
 healthcheckTimeout = 30
 restartPolicyType = "ON_FAILURE"
