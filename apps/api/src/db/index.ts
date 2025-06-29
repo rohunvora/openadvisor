@@ -64,7 +64,7 @@ export const userOperations = {
   async getAllUsers(limit = 50): Promise<User[]> {
     return await db.select().from(users)
       .where(eq(users.type, 'kol'))
-      .orderBy(users.createdAt)
+      .orderBy(desc(users.createdAt))
       .limit(limit);
   },
 
