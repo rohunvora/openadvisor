@@ -1,0 +1,14 @@
+[build]
+builder = "nixpacks"
+buildCommand = "cd apps/api && pnpm install --frozen-lockfile && pnpm build"
+
+[deploy]
+startCommand = "cd apps/api && node dist/index.js"
+healthcheckPath = "/api/health"
+healthcheckTimeout = 30
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 3
+
+[variables]
+PORT = "8080"
+NODE_ENV = "production" 
