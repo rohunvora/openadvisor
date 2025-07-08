@@ -147,8 +147,8 @@ const buildApp = async () => {
   // Serialize user
   fastifyPassport.registerUserSerializer(async (user: any) => user.id);
   fastifyPassport.registerUserDeserializer(async (id: string) => {
-    // TODO: Get user from database
-    return { id };
+    const { userOperations } = await import("./db/index");
+    return userOperations.findById(id);
   });
 
   // Routes
